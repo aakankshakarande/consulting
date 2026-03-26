@@ -621,9 +621,12 @@
       justify-content: space-between;
       font-size: 0.8rem;
       color: var(--mid);
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
     footer a { color: var(--mid); text-decoration: none; }
     footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -1020,7 +1023,7 @@
       </div>
       <div>
         <div class="contact-label">Email</div>
-        <a href="mailto:aakanskhakarande@yahoo.com" class="contact-value">aakankshakarande@yahoo.com</a>
+        <a href="mailto:aakankshakarande@yahoo.com" class="contact-value">aakankshakarande@yahoo.com</a>
       </div>
     </div>
     <div class="contact-item">
@@ -1061,7 +1064,7 @@
   <div class="contact-right">
     <p class="contact-tagline">Ready to<br><span>build something?</span></p>
     <p class="contact-note">I take on a limited number of consulting engagements at a time. If you're working on a brand that needs sharp GTM thinking, drop me a line — let's see if it's a fit.</p>
-    <a href="/mailto:aakankshakarande@yahoo.com" class="btn-primary">
+    <a href="mailto:aakankshakarande@yahoo.com" class="btn-primary">
       Get in touch
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1073,4 +1076,11 @@
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Aakanksha Karande. All rights reserved.</span>
-  <a href="/cdn-cgi/l/email-protection#3d5c5c565c53564e555c1359500c057d5a505c5451135e5250"><span class="__cf_email_
+  <div class="footer-links">
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="refund.html">Refund Policy</a>
+    <a href="mailto:aakankshakarande@yahoo.com">aakankshakarande@yahoo.com</a>
+  </div>
+</footer>
+<!-- FOOTER OLD
