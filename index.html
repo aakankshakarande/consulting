@@ -503,6 +503,52 @@
     .sector-pill svg { width: 13px; height: 13px; flex-shrink: 0; transition: stroke 0.2s; }
     .sector-pill:hover svg { stroke: var(--white); }
 
+    /* ── WORK TABS ── */
+    .work-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .work-tab {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--mid);
+      background: none;
+      border: none;
+      padding: 0.75rem 1.75rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .work-tab::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+    .work-tab:hover { color: var(--black); }
+    .work-tab.active { color: var(--black); font-weight: 600; }
+    .work-tab.active::after { transform: scaleX(1); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .case-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .case-link:hover { color: var(--black); }
+
     /* ── BOOK A CALL ── */
     #book {
       background: var(--card-bg);
@@ -868,77 +914,200 @@
   <h2>The work speaks.</h2>
   <p class="section-intro">Real outcomes across categories — anonymised out of client respect, not lack of proof.</p>
 
-  <div class="cases-grid">
-
-    <div class="case-card">
-      <p class="case-category">Functional Food & Wellness D2C Brand</p>
-      <p class="case-title">Built a brand from zero — and a growth engine to match</p>
-      <p class="case-desc">Led end-to-end NPD, GTM, and D2C buildout for a functional nutrition brand — 21 SKUs, Shopify storefront with AI-based nutrition personalisation, and multi-channel distribution across D2C, marketplaces, and quick commerce.</p>
-      <div class="case-results">
-        <span class="result-pill">₹11L+ ARR in Year 1</span>
-        <span class="result-pill">19% Repeat Rate</span>
-        <span class="result-pill">4,000-unit B2B Order</span>
-        <span class="result-pill">21 SKUs Launched</span>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <p class="case-category">Heritage Sweets & FMCG Brand</p>
-      <p class="case-title">New categories, global markets, and a 70% revenue share</p>
-      <p class="case-desc">Created and scaled two new product categories — Healthy Laddus and Festive Gifting — from consumer research through to sustained revenue. Led international expansion across 7 countries and conceptualised India's first video-based digital gifting product.</p>
-      <div class="case-results">
-        <span class="result-pill">25% YoY Online Growth</span>
-        <span class="result-pill">70% Revenue from Gifting</span>
-        <span class="result-pill">7 Countries</span>
-        <span class="result-pill">60%+ Non-Festive Growth</span>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <p class="case-category">Microbiome Skincare & Wellness Brand</p>
-      <p class="case-title">Research-to-market translation for science-led products</p>
-      <p class="case-desc">Owned GTM, brand narrative, and marketplace growth for a clinical skincare brand. Translated R&D outputs into consumer-facing storytelling, built launch roadmaps, and managed P&L across D2C, Amazon, Flipkart, Blinkit, and Zepto.</p>
-      <div class="case-results">
-        <span class="result-pill">Multi-channel Launch</span>
-        <span class="result-pill">Medical Comms Strategy</span>
-        <span class="result-pill">Full P&L Ownership</span>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <p class="case-category">Nutraceutical Brand · AI Transformation</p>
-      <p class="case-title">Built an AI-ready growth org from the inside</p>
-      <p class="case-desc">Led enterprise-wide agentic AI adoption for an internal growth and marketing team — designing automation workflows, prompt systems, and capability frameworks that improved speed-to-market and decision intelligence across business units.</p>
-      <div class="case-results">
-        <span class="result-pill">Org-wide AI Adoption</span>
-        <span class="result-pill">Agentic Workflow Design</span>
-        <span class="result-pill">Marketing Automation</span>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <p class="case-category">Kerala Heritage Sweets Brand</p>
-      <p class="case-title">Brand identity and packaging for a regional brand going national</p>
-      <p class="case-desc">Led branding, packaging design direction, and brand communications strategy for a Kerala-based sweets brand — positioning it for national visibility while preserving regional authenticity.</p>
-      <div class="case-results">
-        <span class="result-pill">Full Brand Identity</span>
-        <span class="result-pill">Packaging System</span>
-        <span class="result-pill">Brand Communications</span>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <p class="case-category">Wellness E-Commerce Brand</p>
-      <p class="case-title">CRO and brand strategy for a D2C site that wasn't converting</p>
-      <p class="case-desc">Acted as brand strategist and CRO lead for iLabotanicals.com — auditing the full digital experience, redesigning information architecture and UX flows, and rebuilding the brand narrative to improve conversion and credibility.</p>
-      <div class="case-results">
-        <span class="result-pill">CRO Audit & Fixes</span>
-        <span class="result-pill">UX Redesign</span>
-        <span class="result-pill">Brand Repositioning</span>
-      </div>
-    </div>
-
+  <!-- TABS -->
+  <div class="work-tabs">
+    <button class="work-tab active" data-tab="gtm">GTM &amp; Marketing</button>
+    <button class="work-tab" data-tab="social">Social Media</button>
+    <button class="work-tab" data-tab="web">Website Design</button>
   </div>
+
+  <!-- TAB: GTM & MARKETING -->
+  <div class="tab-panel active" id="tab-gtm">
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <p class="case-category">Functional Food & Wellness D2C Brand</p>
+        <p class="case-title">Built a brand from zero — and a growth engine to match</p>
+        <p class="case-desc">Led end-to-end NPD, GTM, and D2C buildout for a functional nutrition brand — 21 SKUs, Shopify storefront with AI-based nutrition personalisation, and multi-channel distribution across D2C, marketplaces, and quick commerce.</p>
+        <div class="case-results">
+          <span class="result-pill">₹11L+ ARR in Year 1</span>
+          <span class="result-pill">19% Repeat Rate</span>
+          <span class="result-pill">4,000-unit B2B Order</span>
+          <span class="result-pill">21 SKUs Launched</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Heritage Sweets & FMCG Brand</p>
+        <p class="case-title">New categories, global markets, and a 70% revenue share</p>
+        <p class="case-desc">Created and scaled two new product categories — Healthy Laddus and Festive Gifting — from consumer research through to sustained revenue. Led international expansion across 7 countries and conceptualised India's first video-based digital gifting product.</p>
+        <div class="case-results">
+          <span class="result-pill">25% YoY Online Growth</span>
+          <span class="result-pill">70% Revenue from Gifting</span>
+          <span class="result-pill">7 Countries</span>
+          <span class="result-pill">60%+ Non-Festive Growth</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Microbiome Skincare & Wellness Brand</p>
+        <p class="case-title">Research-to-market translation for science-led products</p>
+        <p class="case-desc">Owned GTM, brand narrative, and marketplace growth for a clinical skincare brand. Translated R&D outputs into consumer-facing storytelling, built launch roadmaps, and managed P&L across D2C, Amazon, Flipkart, Blinkit, and Zepto.</p>
+        <div class="case-results">
+          <span class="result-pill">Multi-channel Launch</span>
+          <span class="result-pill">Medical Comms Strategy</span>
+          <span class="result-pill">Full P&L Ownership</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Nutraceutical Brand · AI Transformation</p>
+        <p class="case-title">Built an AI-ready growth org from the inside</p>
+        <p class="case-desc">Led enterprise-wide agentic AI adoption for an internal growth and marketing team — designing automation workflows, prompt systems, and capability frameworks that improved speed-to-market and decision intelligence across business units.</p>
+        <div class="case-results">
+          <span class="result-pill">Org-wide AI Adoption</span>
+          <span class="result-pill">Agentic Workflow Design</span>
+          <span class="result-pill">Marketing Automation</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Kerala Heritage Sweets Brand</p>
+        <p class="case-title">Brand identity and packaging for a regional brand going national</p>
+        <p class="case-desc">Led branding, packaging design direction, and brand communications strategy for a Kerala-based sweets brand — positioning it for national visibility while preserving regional authenticity.</p>
+        <div class="case-results">
+          <span class="result-pill">Full Brand Identity</span>
+          <span class="result-pill">Packaging System</span>
+          <span class="result-pill">Brand Communications</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Apparel Brand</p>
+        <p class="case-title">GTM and NPD strategy for a fashion-forward D2C brand</p>
+        <p class="case-desc">Consulting engagement covering go-to-market strategy, new product development direction, market analysis, and online marketing for an apparel brand scaling its D2C presence.</p>
+        <div class="case-results">
+          <span class="result-pill">GTM Roadmap</span>
+          <span class="result-pill">NPD Framework</span>
+          <span class="result-pill">Market Analysis</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAB: SOCIAL MEDIA -->
+  <div class="tab-panel" id="tab-social">
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <p class="case-category">Heritage Sweets Brand · Instagram</p>
+        <p class="case-title">Building a legacy brand's digital voice from scratch</p>
+        <p class="case-desc">Developed and executed social media strategy for a beloved Indian sweets brand — creating content that balanced heritage storytelling with modern, scroll-stopping formats. Built a consistent brand voice across festive and always-on content calendars.</p>
+        <div class="case-results">
+          <span class="result-pill">Festive Campaign Strategy</span>
+          <span class="result-pill">Content Calendar</span>
+          <span class="result-pill">Brand Voice System</span>
+        </div>
+        <a href="https://www.instagram.com/anandsweetsindia" target="_blank" class="case-link">
+          View Instagram →
+        </a>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Functional Wellness Brand · Instagram</p>
+        <p class="case-title">Social that educates, converts, and builds community</p>
+        <p class="case-desc">Built Kenkou's Instagram presence from zero — creating science-backed content that demystifies functional nutrition without losing relatability. Designed content frameworks for product education, ingredient storytelling, and community engagement.</p>
+        <div class="case-results">
+          <span class="result-pill">0 → Active Community</span>
+          <span class="result-pill">Product Education Content</span>
+          <span class="result-pill">Ingredient Storytelling</span>
+        </div>
+        <a href="https://www.instagram.com/kenkouindia" target="_blank" class="case-link">
+          View Instagram →
+        </a>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Microbiome Skincare Brand · Instagram</p>
+        <p class="case-title">Translating clinical science into shareable content</p>
+        <p class="case-desc">Led social media strategy for a science-led skincare brand — translating microbiome research and clinical positioning into consumer-friendly content. Built frameworks for medical communication that felt credible without being cold.</p>
+        <div class="case-results">
+          <span class="result-pill">Science-to-Content Framework</span>
+          <span class="result-pill">Medical Comms Strategy</span>
+          <span class="result-pill">Brand Narrative</span>
+        </div>
+        <a href="https://www.instagram.com/skiom" target="_blank" class="case-link">
+          View Instagram →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAB: WEBSITE DESIGN -->
+  <div class="tab-panel" id="tab-web">
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <p class="case-category">Wellness D2C · Shopify</p>
+        <p class="case-title">Full Shopify buildout with an AI nutrition engine at its core</p>
+        <p class="case-desc">Built Kenkou's Shopify storefront from scratch — dark premium design system, collection pages, and individual product pages with distinct visual themes per SKU category. Core feature: an AI-based 'Find Your Fit' nutrition quiz driving conversion and repeat purchase.</p>
+        <div class="case-results">
+          <span class="result-pill">Full Storefront Build</span>
+          <span class="result-pill">AI Nutrition Quiz</span>
+          <span class="result-pill">19% Repeat Rate</span>
+        </div>
+        <a href="https://kenkou.in" target="_blank" class="case-link">
+          Visit kenkou.in →
+        </a>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Heritage Sweets Brand · E-Commerce</p>
+        <p class="case-title">E-commerce and digital experience for a legacy FMCG brand</p>
+        <p class="case-desc">Worked on digital product experience, catalogue quality, and conversion paths for anandsweets.in — improving messaging, assortment presentation, and the online gifting journey to drive festive and year-round revenue.</p>
+        <div class="case-results">
+          <span class="result-pill">Catalogue Optimisation</span>
+          <span class="result-pill">Gifting UX</span>
+          <span class="result-pill">Conversion Improvement</span>
+        </div>
+        <a href="https://anandsweets.in" target="_blank" class="case-link">
+          Visit anandsweets.in →
+        </a>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Wellness E-Commerce · CRO & Brand</p>
+        <p class="case-title">CRO and brand strategy for a D2C site that wasn't converting</p>
+        <p class="case-desc">Full CRO audit and redesign of iLabotanicals.com — rebuilt information architecture, UX flows, and brand narrative. Identified friction points across the purchase journey and restructured the site to improve trust signals and conversion rates.</p>
+        <div class="case-results">
+          <span class="result-pill">CRO Audit & Fixes</span>
+          <span class="result-pill">UX Redesign</span>
+          <span class="result-pill">Brand Repositioning</span>
+        </div>
+        <a href="https://ilabotanicals.com" target="_blank" class="case-link">
+          Visit ilabotanicals.com →
+        </a>
+      </div>
+
+      <div class="case-card">
+        <p class="case-category">Microbiome Skincare · D2C</p>
+        <p class="case-title">D2C and marketplace presence for a science-led skincare brand</p>
+        <p class="case-desc">Managed digital product experience and marketplace content strategy for skiom.in — building product storytelling, scientific credibility content, and conversion-optimised listing assets across D2C and quick commerce channels.</p>
+        <div class="case-results">
+          <span class="result-pill">Product Storytelling</span>
+          <span class="result-pill">Marketplace Content</span>
+          <span class="result-pill">D2C Optimisation</span>
+        </div>
+        <a href="https://skiom.in" target="_blank" class="case-link">
+          Visit skiom.in →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <!-- BRANDS -->
@@ -979,7 +1148,7 @@
         <li>Follow-up summary via email</li>
       </ul>
       <!-- Replace RAZORPAY_LINK_999 with your actual Razorpay payment link -->
-      <a href="https://rzp.io/rzp/9L3CQ5l" target="_blank" class="btn-book">
+      <a href="RAZORPAY_LINK_999" target="_blank" class="btn-book">
         Book — ₹999
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -991,15 +1160,15 @@
       <span class="book-badge">Most Popular</span>
       <p class="book-duration">60-Minute Strategy Session</p>
       <p class="book-price">₹1,999</p>
-      <p class="book-desc">A full working session — GTM strategy, brand audit, NPD direction, or growth diagnosis. Walk away with a clear next-step plan, not just a conversation.</p>
+      <p class="book-desc">A full working session — GTM strategy, brand audit, NPD direction, growth diagnosis. Walk away with a clear next-step plan, not just a conversation.</p>
       <ul class="book-includes">
-        <li>Detailed brand or GTM analysis</li>
+        <li>Full brand or GTM deep-dive</li>
         <li>Structured recommendations + priorities</li>
         <li>Written session summary</li>
         <li>15-day email follow-up included</li>
       </ul>
       <!-- Replace RAZORPAY_LINK_1999 with your actual Razorpay payment link -->
-      <a href="https://rzp.io/rzp/cuKvr3V" target="_blank" class="btn-book">
+      <a href="RAZORPAY_LINK_1999" target="_blank" class="btn-book">
         Book — ₹1,999
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1073,14 +1242,35 @@
   </div>
 </section>
 
+
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Aakanksha Karande. All rights reserved.</span>
   <div class="footer-links">
-    <a href="terms.html">Terms & Conditions</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="refund.html">Refund Policy</a>
-  
+    <a href="mailto:aakankshakarande@yahoo.com">aakankshakarande@yahoo.com</a>
   </div>
 </footer>
-<!-- FOOTER OLD
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.work-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Sticky nav shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
+
+</body>
+</html>
