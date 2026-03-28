@@ -190,7 +190,7 @@
     }
 
     /* ── SERVICES ── */
-    #services { background: var(--black); color: var(--white); }
+    #services { background: var(--black); color: var(--white); border-top: 4px solid var(--accent); }
     #services .section-label { color: var(--accent-light); }
     #services h2 { color: var(--white); }
     #services .section-intro { color: #a09890; }
@@ -252,14 +252,16 @@
       grid-template-columns: 1fr 1fr;
       gap: 0;
       padding: 0;
+      background: var(--card-bg);
     }
     .about-left {
       padding: 6rem 4rem;
       border-right: 1px solid var(--border);
+      background: var(--card-bg);
     }
     .about-right {
       padding: 6rem 4rem;
-      background: var(--card-bg);
+      background: #e8e3dc;
     }
     .about-body {
       font-size: 1rem;
@@ -293,7 +295,7 @@
     .cred-text strong { display: block; color: var(--black); font-weight: 500; font-size: 0.9rem; }
 
     /* ── CASE STUDIES ── */
-    #work { background: var(--white); }
+    #work { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -359,13 +361,15 @@
 
     /* ── LOGOS ── */
     #brands {
-      background: var(--black);
+      background: var(--card-bg);
       padding: 5rem 4rem;
       text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-    #brands .section-label { color: var(--accent-light); text-align: center; }
-    #brands h2 { color: var(--white); text-align: center; margin-bottom: 0.5rem; }
-    #brands .section-intro { color: #a09890; text-align: center; margin: 0 auto 3rem; }
+    #brands .section-label { color: var(--accent); text-align: center; }
+    #brands h2 { color: var(--black); text-align: center; margin-bottom: 0.5rem; }
+    #brands .section-intro { color: var(--mid); text-align: center; margin: 0 auto 3rem; }
 
     .logo-strip {
       display: flex;
@@ -379,9 +383,9 @@
       align-items: center;
       justify-content: center;
       height: 44px;
-      opacity: 0.55;
+      opacity: 0.5;
       transition: opacity 0.25s;
-      filter: brightness(0) invert(1);
+      filter: brightness(0);
     }
     .logo-item:hover { opacity: 1; }
     .logo-item img { max-height: 36px; max-width: 120px; object-fit: contain; }
@@ -391,10 +395,10 @@
       font-weight: 700;
       font-size: 0.85rem;
       letter-spacing: 0.06em;
-      color: #fff;
+      color: var(--black);
       text-transform: uppercase;
       padding: 0.4rem 1rem;
-      border: 1px solid #333;
+      border: 1px solid var(--border);
     }
 
     /* ── CONTACT ── */
@@ -403,6 +407,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding: 0;
+      border-top: 4px solid var(--accent);
     }
     .contact-left {
       padding: 6rem 4rem;
@@ -502,6 +507,130 @@
     .sector-pill:hover { background: var(--black); color: var(--white); border-color: var(--black); }
     .sector-pill svg { width: 13px; height: 13px; flex-shrink: 0; transition: stroke 0.2s; }
     .sector-pill:hover svg { stroke: var(--white); }
+
+    .hero-qualifier {
+      font-size: 0.82rem;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      padding: 0.6rem 0.9rem;
+      border-left: 2px solid var(--accent);
+      background: var(--card-bg);
+    }
+    .hero-qualifier strong { color: var(--black); font-weight: 500; }
+    .hero-ctas { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+    .hero-cta-ghost {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-cta-ghost:hover { color: var(--black); border-color: var(--black); }
+    .results-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0 0 1rem 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
+    /* ── AUDIT SECTION ── */
+    #audit {
+      background: var(--black);
+      padding: 6rem 4rem;
+    }
+    #audit .section-label { color: var(--accent-light); }
+    #audit h2 { color: var(--white); }
+    .audit-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+    .audit-left {}
+    .audit-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #a09890;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .audit-qualifier {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--accent-light);
+      padding: 0.75rem 1rem;
+      border: 1px solid #2a2a2a;
+      background: #111;
+    }
+    .audit-qualifier svg { stroke: var(--accent); flex-shrink: 0; }
+    .audit-card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 2.5rem;
+    }
+    .audit-card.featured { border-color: var(--accent); }
+    .audit-card-top { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid #222; }
+    .audit-timeline {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0.4rem 0 0.6rem;
+    }
+    .audit-promise {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #ccc;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    .featured-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: #ffffff !important;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 1.8rem;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: background 0.25s;
+      border: none;
+    }
+    .featured-btn:hover { background: var(--accent-light); color: #ffffff !important; }
+    .audit-reassurance {
+      font-size: 0.78rem;
+      color: #666;
+      text-align: center;
+    }
+    .audit-reassurance a { color: var(--accent-light); text-decoration: none; }
+    .audit-reassurance a:hover { text-decoration: underline; }
+    #audit .book-badge { background: var(--accent); }
+    #audit .book-duration { color: var(--white); }
+    #audit .book-price { color: var(--accent); }
+    #audit .book-includes li { color: #a09890; }
+    #audit .book-includes li::before { background: var(--accent); }
+    #audit .book-note { color: #555; text-align: center; margin-top: 0; }
 
     /* ── WORK TABS ── */
     .work-tabs {
@@ -690,6 +819,9 @@
       #contact { grid-template-columns: 1fr; }
       .contact-left, .contact-right { padding: 4rem 2rem; border-right: none; }
       #brands { padding: 4rem 2rem; }
+      #audit { padding: 4rem 2rem; }
+      .audit-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; gap: 1rem; }
       #book { padding: 4rem 2rem; }
       .book-cards { grid-template-columns: 1fr; }
       footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -707,7 +839,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#brands">Brands</a></li>
-    <li><a href="#book">Book a Call</a></li>
+    <li><a href="#audit">Book a Call</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -716,31 +848,34 @@
 <section id="hero">
   <div class="hero-left">
     <p class="hero-label">GTM · D2C · Brand Strategy · AI-Enabled Growth</p>
-    <h1>Build brands<br>that <span>move.</span></h1>
-    <p class="hero-sub">I help consumer, wellness, and digital-first brands go from idea to market — and from market to scale. 10+ years of GTM, NPD, and growth strategy across India and global markets.</p>
-    <a href="#contact" class="hero-cta">
-      Work with me
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <h1>I fix what's<br>blocking your<br><span>revenue.</span></h1>
+    <p class="hero-sub">I don't give generic advice. I find exactly what's broken in your GTM, brand, or D2C strategy — and fix it. 10+ years, 10+ brands, real outcomes.</p>
+    <p class="hero-qualifier">Best suited for brands doing <strong>₹5L+ monthly revenue</strong> ready to scale.</p>
+    <div class="hero-ctas">
+      <a href="#audit" class="hero-cta">
+        Fix My Revenue Leaks
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#work" class="hero-cta-ghost">See the work</a>
+    </div>
   </div>
   <div class="hero-right">
+    <p class="results-label">Results delivered</p>
     <div class="stat-block">
-      <div class="stat-number">10+</div>
-      <div class="stat-label">Years in GTM, D2C & growth strategy</div>
+      <div class="stat-number">+25%</div>
+      <div class="stat-label">YoY online revenue growth</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">70%</div>
+      <div class="stat-label">Of total revenue moved to marketplace channel</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">+60%</div>
+      <div class="stat-label">Category growth in non-seasonal months</div>
     </div>
     <div class="stat-block">
       <div class="stat-number">7</div>
       <div class="stat-label">International markets launched across</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-number">70%</div>
-      <div class="stat-label">Peak YoY revenue growth delivered</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-number">10+</div>
-      <div class="stat-label">Brands built, scaled, or repositioned</div>
     </div>
   </div>
 </section>
@@ -1129,56 +1264,47 @@
   </div>
 </section>
 
-<!-- BOOK A CALL -->
-<section id="book">
-  <div class="book-header">
-    <p class="section-label">Book a Call</p>
-    <h2>Pick a slot.<br>Come prepared.</h2>
-    <p class="section-intro">Pay to confirm your session. Bring your brand challenge — I'll bring sharp thinking and no fluff.</p>
-  </div>
-
-  <div class="book-cards">
-    <div class="book-card">
-      <p class="book-duration">30-Minute Session</p>
-      <p class="book-price">₹999</p>
-      <p class="book-desc">A focused session for one specific question — positioning, channel strategy, pricing, GTM direction. Come with clarity on what you need answered.</p>
-      <ul class="book-includes">
-        <li>1 focused problem / question</li>
-        <li>Direct, actionable recommendations</li>
-        <li>Follow-up summary via email</li>
-      </ul>
-      <!-- Replace RAZORPAY_LINK_999 with your actual Razorpay payment link -->
-      <a href="RAZORPAY_LINK_999" target="_blank" class="btn-book">
-        Book — ₹999
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+<!-- AUDIT / HERO OFFER -->
+<section id="audit">
+  <div class="audit-wrap">
+    <div class="audit-left">
+      <p class="section-label">The Entry Point</p>
+      <h2>Fix Your Revenue<br>Leaks in 7 Days.</h2>
+      <p class="audit-sub">Most brands losing money aren't doing anything obviously wrong. They're losing it quietly — through positioning gaps, pricing misalignment, channel inefficiency, and content that doesn't convert. I find it. I fix it. Fast.</p>
+      <p class="audit-qualifier">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        For brands doing ₹5L+ monthly revenue ready to grow faster
+      </p>
     </div>
-
-    <div class="book-card featured">
-      <span class="book-badge">Most Popular</span>
-      <p class="book-duration">60-Minute Strategy Session</p>
-      <p class="book-price">₹1,999</p>
-      <p class="book-desc">A full working session — GTM strategy, brand audit, NPD direction, growth diagnosis. Walk away with a clear next-step plan, not just a conversation.</p>
-      <ul class="book-includes">
-        <li>Full brand or GTM deep-dive</li>
-        <li>Structured recommendations + priorities</li>
-        <li>Written session summary</li>
-        <li>15-day email follow-up included</li>
-      </ul>
-      <!-- Replace RAZORPAY_LINK_1999 with your actual Razorpay payment link -->
-      <a href="RAZORPAY_LINK_1999" target="_blank" class="btn-book">
-        Book — ₹1,999
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+    <div class="audit-right">
+      <div class="audit-card featured">
+        <div class="audit-card-top">
+          <span class="book-badge">Most Impactful</span>
+          <p class="book-duration">Revenue Growth Audit</p>
+          <p class="audit-timeline">Delivered in 7 days</p>
+          <p class="book-price">₹1,999</p>
+        </div>
+        <p class="audit-promise">You'll walk away knowing exactly what's blocking your revenue — and the precise steps to fix it.</p>
+        <ul class="book-includes">
+          <li>3 biggest revenue blockers identified</li>
+          <li>Pricing &amp; marketplace gap analysis</li>
+          <li>GTM and channel efficiency review</li>
+          <li>Clear, prioritised action plan</li>
+          <li>Written summary + 15-day follow-up</li>
+        </ul>
+        <a href="RAZORPAY_LINK_1999" target="_blank" class="featured-btn">
+          Book Revenue Audit — ₹1,999
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p class="audit-reassurance">Not ready for a full audit? Start with a focused 30-min call — <a href="RAZORPAY_LINK_999" target="_blank">₹999</a>.</p>
+      </div>
     </div>
   </div>
-
   <p class="book-note">After payment, you'll receive a Calendly link to pick your slot. Sessions held on Google Meet.</p>
 </section>
+
+<!-- BOOK A CALL (legacy anchor) -->
+<div id="book"></div>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -1241,6 +1367,7 @@
     </a>
   </div>
 </section>
+
 
 
 <!-- FOOTER -->
