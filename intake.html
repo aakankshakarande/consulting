@@ -727,12 +727,11 @@
         </svg>
       </div>
       <h2 class="confirm-title">Got it. Thank you.</h2>
-      <p class="confirm-sub">I've received your details. Now complete payment to confirm your session — you'll get a Calendly link to pick your slot right after.</p>
-      <a href="RAZORPAY_LINK_1999" target="_blank" class="btn-pay" id="payment-btn">
-        Complete Payment
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p class="confirm-sub">Details received. Redirecting you to payment in a moment — complete it to confirm your slot.</p>
+      <a href="https://rzp.io/rzp/cuKvr3V" target="_blank" class="btn-pay" id="payment-btn">
+        Complete Payment →
       </a>
-      <p class="pay-note">Secure payment via Razorpay · Sessions on Google Meet</p>
+      <p class="pay-note">Redirecting automatically · Secure payment via Razorpay · Sessions on Google Meet</p>
     </div>
 
   </div><!-- /right col -->
@@ -745,10 +744,18 @@
     '₹5L – ₹10L', '₹10L – ₹25L', '₹25L – ₹50L', '₹50L+'
   ];
 
+  // ── REPLACE THIS with your Formspree form ID after signing up at formspree.io ──
+  const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+  const RAZORPAY_AUDIT = 'https://rzp.io/rzp/cuKvr3V';
+  const RAZORPAY_QUICK = 'https://rzp.io/rzp/9L3CQ5l';
+
   // Set plan from URL param
   const params = new URLSearchParams(window.location.search);
   const plan = params.get('plan');
-  if (plan === 'quick') {
+  const isQuick = plan === 'quick';
+
+  if (isQuick) {
     document.getElementById('plan-badge').textContent = '30-Min Strategy Call';
     document.getElementById('plan-name').textContent = '30-Min Strategy Call';
     document.getElementById('plan-price').textContent = '₹999';
@@ -757,8 +764,10 @@
       <li>Direct, actionable recommendations</li>
       <li>Follow-up summary via email</li>
     `;
-    document.getElementById('payment-btn').href = 'RAZORPAY_LINK_999';
+    document.getElementById('payment-btn').href = RAZORPAY_QUICK;
   }
+
+  const razorpayLink = isQuick ? RAZORPAY_QUICK : RAZORPAY_AUDIT;
 
   function updateRevenue(val) {
     document.getElementById('revenue-display').textContent = REVENUE_LABELS[val];
@@ -808,47 +817,73 @@
     if (current > 1) showStep(current - 1);
   }
 
-  function submitForm() {
+  async function submitForm() {
     if (!validate(5)) return;
 
+    // Disable button to prevent double submit
+    const btn = document.querySelector('#step-5 .btn-next');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
     // Collect all data
-    const data = {
-      plan: plan === 'quick' ? '30-Min Call (₹999)' : 'Revenue Growth Audit (₹1,999)',
+    const formData = {
+      plan: isQuick ? '30-Min Call — ₹999' : 'Revenue Growth Audit — ₹1,999',
       name: document.getElementById('f-name').value,
       email: document.getElementById('f-email').value,
       phone: document.getElementById('f-phone').value,
       brand: document.getElementById('f-brand').value,
-      website: document.getElementById('f-website').value,
+      website: document.getElementById('f-website').value || '—',
       sector: document.querySelector('input[name="sector"]:checked')?.value || '—',
-      revenue: document.getElementById('revenue-display').textContent,
+      monthly_revenue: document.getElementById('revenue-display').textContent,
       channels: [...document.querySelectorAll('input[id^="ch"]:checked')].map(i => i.value).join(', ') || '—',
-      painPoints: [...document.querySelectorAll('input[id^="p"]:checked')].map(i => i.value).join(', ') || '—',
-      problem: document.getElementById('f-problem').value,
-      tried: document.getElementById('f-tried').value,
-      success: document.getElementById('f-success').value,
-      need: document.querySelector('input[name="need"]:checked')?.value || '—',
+      pain_points: [...document.querySelectorAll('input[id^="p"]:checked')].map(i => i.value).join(', ') || '—',
+      biggest_problem: document.getElementById('f-problem').value,
+      what_theyve_tried: document.getElementById('f-tried').value || '—',
+      success_in_90_days: document.getElementById('f-success').value || '—',
+      session_goal: document.querySelector('input[name="need"]:checked')?.value || '—',
       urgency: document.querySelector('input[name="urgency"]:checked')?.value || '—',
-      budget: document.querySelector('input[name="budget"]:checked')?.value || '—',
-      extra: document.getElementById('f-extra').value,
-      source: document.getElementById('f-source').value,
+      consulting_budget: document.querySelector('input[name="budget"]:checked')?.value || '—',
+      additional_context: document.getElementById('f-extra').value || '—',
+      how_they_found_you: document.getElementById('f-source').value || '—',
+      _subject: `[New Booking] ${document.getElementById('f-brand').value} — ${isQuick ? '₹999 Call' : '₹1,999 Audit'}`,
+      _replyto: document.getElementById('f-email').value,
     };
 
-    // Send to email via mailto (fallback — replace with Formspree/Netlify in production)
-    const body = Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n');
-    const subject = encodeURIComponent(`[Consultation Request] ${data.brand} — ${data.plan}`);
-    const bodyEncoded = encodeURIComponent(body);
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    // Open mailto silently in background
-    const link = document.createElement('a');
-    link.href = `mailto:aakankshakarande@yahoo.com?subject=${subject}&body=${bodyEncoded}`;
-    link.click();
+      if (response.ok) {
+        // Show confirmation then redirect to Razorpay
+        showConfirmAndPay();
+      } else {
+        throw new Error('Formspree error');
+      }
+    } catch (err) {
+      // If Formspree not set up yet, still redirect to payment
+      // (swap this out once Formspree ID is added)
+      console.warn('Formspree not configured — proceeding to payment anyway.');
+      showConfirmAndPay();
+    }
+  }
 
-    // Show confirmation screen
+  function showConfirmAndPay() {
+    // Hide all steps
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
     document.getElementById('progress-fill').style.width = '100%';
     document.getElementById('step-current').textContent = '✓';
+
+    // Show confirm screen
     document.getElementById('confirm-screen').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Auto-redirect to Razorpay after 2.5 seconds
+    setTimeout(() => {
+      window.location.href = razorpayLink;
+    }, 2500);
   }
 </script>
 
