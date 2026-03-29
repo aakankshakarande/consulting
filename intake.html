@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Session — Aakanksha Karande</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --accent: #c8601a;
+      --accent-light: #e8845a;
+      --mid: #6b6560;
+      --border: #e0dbd4;
+      --card-bg: #f0ece6;
+      --dark-card: #111;
+      --dark-border: #2a2a2a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #666;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent-light); }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      min-height: calc(100vh - 65px);
+    }
+
+    /* ── LEFT PANEL ── */
+    .left-panel {
+      padding: 4rem;
+      border-right: 1px solid var(--dark-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: sticky;
+      top: 65px;
+      height: calc(100vh - 65px);
+      overflow: hidden;
+    }
+    .left-top {}
+    .plan-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      background: var(--accent);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .left-panel h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .left-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .plan-detail {
+      border: 1px solid var(--dark-border);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .plan-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .plan-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .plan-includes {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+    .plan-includes li {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: #888;
+      padding: 0.25rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .plan-includes li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .left-bottom {}
+    .left-note {
+      font-size: 0.78rem;
+      color: #444;
+      line-height: 1.6;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--dark-border);
+    }
+
+    /* ── PROGRESS ── */
+    .progress-wrap {
+      padding: 2rem 4rem 0;
+    }
+    .progress-bar {
+      height: 2px;
+      background: var(--dark-border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+    .progress-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+    }
+    .progress-label span { color: var(--accent); }
+
+    /* ── FORM ── */
+    .form-wrap {
+      padding: 2rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-step {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .form-step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .step-sub {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .field-group { margin-bottom: 1.5rem; }
+    .field-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #aaa;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+    .field-group input,
+    .field-group textarea,
+    .field-group select {
+      width: 100%;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field-group input::placeholder,
+    .field-group textarea::placeholder { color: #444; }
+    .field-group input:focus,
+    .field-group textarea:focus,
+    .field-group select:focus { border-color: var(--accent); }
+    .field-group textarea { resize: vertical; min-height: 110px; }
+    .field-group select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .field-group select option { background: #111; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* Radio / Checkbox pills */
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .pill-group input[type="radio"],
+    .pill-group input[type="checkbox"] { display: none; }
+    .pill-group label {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: #888;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 0.4rem 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 0;
+      letter-spacing: 0;
+    }
+    .pill-group input:checked + label {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+    .pill-group label:hover { border-color: var(--accent); color: var(--accent-light); }
+
+    /* Range slider */
+    .range-wrap { padding: 0.25rem 0; }
+    .range-wrap input[type="range"] {
+      width: 100%;
+      -webkit-appearance: none;
+      background: transparent;
+      padding: 0;
+      border: none;
+    }
+    .range-wrap input[type="range"]::-webkit-slider-runnable-track {
+      height: 2px;
+      background: var(--dark-border);
+      border-radius: 2px;
+    }
+    .range-wrap input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: -8px;
+      cursor: pointer;
+    }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: #555;
+      margin-top: 0.4rem;
+    }
+    .range-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Navigation buttons */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--dark-border);
+    }
+    .btn-prev {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #555;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+      padding: 0;
+    }
+    .btn-prev:hover { color: var(--white); }
+    .btn-prev.hidden { visibility: hidden; }
+    .btn-next {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      background: var(--accent);
+      border: none;
+      padding: 0.85rem 2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: background 0.25s;
+    }
+    .btn-next:hover { background: var(--accent-light); }
+    .btn-next:disabled { background: #333; cursor: not-allowed; }
+
+    /* ── CONFIRMATION ── */
+    #confirm-screen {
+      display: none;
+      padding: 4rem;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    #confirm-screen.active { display: flex; }
+    .confirm-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+    .confirm-icon svg { width: 28px; height: 28px; stroke: white; fill: none; }
+    .confirm-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .confirm-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #888;
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn-pay {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: white;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      transition: background 0.25s;
+      margin-bottom: 1rem;
+    }
+    .btn-pay:hover { background: var(--accent-light); }
+    .pay-note {
+      font-size: 0.78rem;
+      color: #444;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .page-wrap { grid-template-columns: 1fr; }
+      .left-panel {
+        position: static;
+        height: auto;
+        padding: 2.5rem 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--dark-border);
+      }
+      .progress-wrap { padding: 1.5rem 1.5rem 0; }
+      .form-wrap { padding: 1.5rem; }
+      .field-row { grid-template-columns: 1fr; }
+      #confirm-screen { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">AK</a>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back
+  </a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="left-top">
+      <span class="plan-badge" id="plan-badge">Revenue Growth Audit</span>
+      <h1>Before we talk,<br>tell me about<br>your brand.</h1>
+      <p class="left-desc">This takes 3 minutes. Your answers help me prepare so we can skip the basics and get straight to what's blocking you.</p>
+      <div class="plan-detail" id="plan-detail">
+        <p class="plan-name" id="plan-name">Revenue Growth Audit</p>
+        <p class="plan-price" id="plan-price">₹1,999</p>
+        <ul class="plan-includes" id="plan-includes">
+          <li>3 biggest revenue blockers identified</li>
+          <li>Pricing &amp; marketplace gap analysis</li>
+          <li>GTM and channel efficiency review</li>
+          <li>Clear, prioritised action plan</li>
+          <li>Written summary + 15-day follow-up</li>
+        </ul>
+      </div>
+    </div>
+    <div class="left-bottom">
+      <p class="left-note">Payment is collected after you submit this form. You'll be redirected to a secure Razorpay link.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: PROGRESS + FORM -->
+  <div style="display:flex;flex-direction:column;">
+
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:20%"></div></div>
+      <p class="progress-label">Step <span id="step-current">1</span> of 5</p>
+    </div>
+
+    <div class="form-wrap">
+
+      <!-- STEP 1: About You -->
+      <div class="form-step active" id="step-1">
+        <p class="step-label">Step 1 — About You</p>
+        <h2 class="step-title">Let's start with the basics.</h2>
+        <p class="step-sub">Who are you and what are you building?</p>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label>Your name *</label>
+            <input type="text" id="f-name" placeholder="Full name" />
+          </div>
+          <div class="field-group">
+            <label>Email address *</label>
+            <input type="email" id="f-email" placeholder="you@brand.com" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Phone number *</label>
+            <input type="tel" id="f-phone" placeholder="+91 98765 43210" />
+          </div>
+          <div class="field-group">
+            <label>Brand / Company name *</label>
+            <input type="text" id="f-brand" placeholder="Your brand name" />
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Website or Instagram (optional)</label>
+          <input type="text" id="f-website" placeholder="yoursite.com or @handle" />
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-prev hidden"></button>
+          <button class="btn-next" onclick="nextStep(1)">
+            Continue
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Brand Stage -->
+      <div class="form-step" id="step-2">
+        <p class="step-label">Step 2 — Your Brand</p>
+        <h2 class="step-title">Where is your brand right now?</h2>
+        <p class="step-sub">Help me understand the stage, category, and scale you're operating at.</p>
+
+        <div class="field-group">
+          <label>What category / sector is your brand in?</label>
+          <div class="pill-group">
+            <input type="radio" name="sector" id="s1" value="Wellness & Nutrition"><label for="s1">Wellness & Nutrition</label>
+            <input type="radio" name="sector" id="s2" value="Skincare & Beauty"><label for="s2">Skincare & Beauty</label>
+            <input type="radio" name="sector" id="s3" value="FMCG / Food"><label for="s3">FMCG / Food</label>
+            <input type="radio" name="sector" id="s4" value="Apparel & Fashion"><label for="s4">Apparel & Fashion</label>
+            <input type="radio" name="sector" id="s5" value="D2C / E-commerce"><label for="s5">D2C / E-commerce</label>
+            <input type="radio" name="sector" id="s6" value="SaaS / Tech"><label for="s6">SaaS / Tech</label>
+            <input type="radio" name="sector" id="s7" value="Other"><label for="s7">Other</label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Current monthly revenue (approx)</label>
+          <div class="range-value" id="revenue-display">₹5L – ₹10L</div>
+          <div class="range-wrap">
+            <input type="range" id="revenue-range" min="0" max="6" value="2" oninput="updateRevenue(this.value)" />
+            <div class="range-labels">
+              <span>Pre-revenue</span>
+              <span>₹50L+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Where are you currently selling? (select all that apply)</label>
+          <div class="pill-group">
+            <input type="checkbox" id="ch1" value="Own D2C website"><label for="ch1">Own D2C website</label>
+            <input type="checkbox" id="ch2" value="Amazon"><label for="ch2">Amazon</label>
+            <input type="checkbox" id="ch3" value="Flipkart"><label for="ch3">Flipkart</label>
+            <input type="checkbox" id="ch4" value="Quick commerce"><label for="ch4">Quick commerce</label>
+            <input type="checkbox" id="ch5" value="Offline / retail"><label for="ch5">Offline / retail</label>
+            <input type="checkbox" id="ch6" value="B2B / corporate"><label for="ch6">B2B / corporate</label>
+            <input type="checkbox" id="ch7" value="Not selling yet"><label for="ch7">Not selling yet</label>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-prev" onclick="prevStep(2)">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+          <button class="btn-next" onclick="nextStep(2)">
+            Continue
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Pain Points -->
+      <div class="form-step" id="step-3">
+        <p class="step-label">Step 3 — The Real Problem</p>
+        <h2 class="step-title">What's actually blocking you?</h2>
+        <p class="step-sub">Be honest. The more specific you are, the more useful our session will be.</p>
+
+        <div class="field-group">
+          <label>What are your biggest challenges right now? (select all that apply)</label>
+          <div class="pill-group">
+            <input type="checkbox" id="p1" value="Low D2C conversion"><label for="p1">Low D2C conversion</label>
+            <input type="checkbox" id="p2" value="Marketplace visibility / ranking"><label for="p2">Marketplace visibility</label>
+            <input type="checkbox" id="p3" value="Pricing strategy"><label for="p3">Pricing strategy</label>
+            <input type="checkbox" id="p4" value="Poor repeat purchase rate"><label for="p4">Low repeat purchases</label>
+            <input type="checkbox" id="p5" value="Brand positioning unclear"><label for="p5">Unclear positioning</label>
+            <input type="checkbox" id="p6" value="High CAC / poor ROAS"><label for="p6">High CAC / poor ROAS</label>
+            <input type="checkbox" id="p7" value="GTM strategy for new product"><label for="p7">GTM for new product</label>
+            <input type="checkbox" id="p8" value="Scaling to new channels"><label for="p8">Scaling to new channels</label>
+            <input type="checkbox" id="p9" value="Social media not working"><label for="p9">Social not converting</label>
+            <input type="checkbox" id="p10" value="Inventory / supply chain issues"><label for="p10">Supply chain issues</label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Describe the #1 problem in your own words *</label>
+          <textarea id="f-problem" placeholder="What's keeping you up at night about this brand? Be specific — revenue targets missed, team gaps, channel that isn't performing, a launch that flopped..."></textarea>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-prev" onclick="prevStep(3)">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+          <button class="btn-next" onclick="nextStep(3)">
+            Continue
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: What they've tried + expectations -->
+      <div class="form-step" id="step-4">
+        <p class="step-label">Step 4 — Context & Expectations</p>
+        <h2 class="step-title">What have you tried,<br>and what do you need?</h2>
+        <p class="step-sub">This helps me skip what's already been done and focus on what actually moves the needle.</p>
+
+        <div class="field-group">
+          <label>What have you already tried to fix this?</label>
+          <textarea id="f-tried" placeholder="Agencies, freelancers, internal experiments, ad spend, new hires, product changes... what's worked, what hasn't?"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label>What does success look like for you in the next 90 days?</label>
+          <textarea id="f-success" placeholder="Be specific — revenue target, a channel that's finally working, a product launched, a clarity on direction..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label>What do you want from this session specifically?</label>
+          <div class="pill-group">
+            <input type="radio" name="need" id="n1" value="A clear GTM plan"><label for="n1">A clear GTM plan</label>
+            <input type="radio" name="need" id="n2" value="Revenue diagnosis"><label for="n2">Revenue diagnosis</label>
+            <input type="radio" name="need" id="n3" value="Brand strategy direction"><label for="n3">Brand strategy direction</label>
+            <input type="radio" name="need" id="n4" value="Channel / marketplace fix"><label for="n4">Channel / marketplace fix</label>
+            <input type="radio" name="need" id="n5" value="Pricing & positioning clarity"><label for="n5">Pricing & positioning</label>
+            <input type="radio" name="need" id="n6" value="AI growth systems"><label for="n6">AI growth systems</label>
+            <input type="radio" name="need" id="n7" value="General sounding board"><label for="n7">General sounding board</label>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-prev" onclick="prevStep(4)">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+          <button class="btn-next" onclick="nextStep(4)">
+            Continue
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Anything else -->
+      <div class="form-step" id="step-5">
+        <p class="step-label">Step 5 — Final Details</p>
+        <h2 class="step-title">Anything else I should know?</h2>
+        <p class="step-sub">Last step. Use this to share anything specific you want to cover, or context that didn't fit above.</p>
+
+        <div class="field-group">
+          <label>How urgent is this for you?</label>
+          <div class="pill-group">
+            <input type="radio" name="urgency" id="u1" value="Exploring options"><label for="u1">Exploring options</label>
+            <input type="radio" name="urgency" id="u2" value="Want to move in 2-4 weeks"><label for="u2">Moving in 2–4 weeks</label>
+            <input type="radio" name="urgency" id="u3" value="Need help now"><label for="u3">Need help now</label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Budget for consulting (monthly, if ongoing)</label>
+          <div class="pill-group">
+            <input type="radio" name="budget" id="b1" value="Just the session for now"><label for="b1">Just the session for now</label>
+            <input type="radio" name="budget" id="b2" value="₹15k–₹30k/month"><label for="b2">₹15k–₹30k/mo</label>
+            <input type="radio" name="budget" id="b3" value="₹30k–₹75k/month"><label for="b3">₹30k–₹75k/mo</label>
+            <input type="radio" name="budget" id="b4" value="₹75k+/month"><label for="b4">₹75k+/mo</label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Anything else you want me to know before we talk?</label>
+          <textarea id="f-extra" placeholder="Links, decks, context, constraints, team size, anything that helps me prepare..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label>How did you hear about me?</label>
+          <select id="f-source">
+            <option value="" disabled selected>Select one</option>
+            <option>WhatsApp group</option>
+            <option>LinkedIn</option>
+            <option>Instagram</option>
+            <option>Referral from someone I know</option>
+            <option>Google search</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-prev" onclick="prevStep(5)">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+          <button class="btn-next" onclick="submitForm()">
+            Submit & Proceed to Payment
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /form-wrap -->
+
+    <!-- CONFIRMATION -->
+    <div id="confirm-screen">
+      <div class="confirm-icon">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2 class="confirm-title">Got it. Thank you.</h2>
+      <p class="confirm-sub">I've received your details. Now complete payment to confirm your session — you'll get a Calendly link to pick your slot right after.</p>
+      <a href="RAZORPAY_LINK_1999" target="_blank" class="btn-pay" id="payment-btn">
+        Complete Payment
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="pay-note">Secure payment via Razorpay · Sessions on Google Meet</p>
+    </div>
+
+  </div><!-- /right col -->
+</div><!-- /page-wrap -->
+
+<script>
+  const STEPS = 5;
+  const REVENUE_LABELS = [
+    'Pre-revenue', 'Under ₹1L', '₹1L – ₹5L',
+    '₹5L – ₹10L', '₹10L – ₹25L', '₹25L – ₹50L', '₹50L+'
+  ];
+
+  // Set plan from URL param
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan');
+  if (plan === 'quick') {
+    document.getElementById('plan-badge').textContent = '30-Min Strategy Call';
+    document.getElementById('plan-name').textContent = '30-Min Strategy Call';
+    document.getElementById('plan-price').textContent = '₹999';
+    document.getElementById('plan-includes').innerHTML = `
+      <li>1 focused problem / question</li>
+      <li>Direct, actionable recommendations</li>
+      <li>Follow-up summary via email</li>
+    `;
+    document.getElementById('payment-btn').href = 'RAZORPAY_LINK_999';
+  }
+
+  function updateRevenue(val) {
+    document.getElementById('revenue-display').textContent = REVENUE_LABELS[val];
+  }
+
+  function setProgress(step) {
+    const pct = (step / STEPS) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('step-current').textContent = step;
+  }
+
+  function showStep(n) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById('step-' + n);
+    if (el) el.classList.add('active');
+    setProgress(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function validate(step) {
+    if (step === 1) {
+      const name = document.getElementById('f-name').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const brand = document.getElementById('f-brand').value.trim();
+      if (!name || !email || !phone || !brand) {
+        alert('Please fill in your name, email, phone, and brand name to continue.');
+        return false;
+      }
+    }
+    if (step === 3) {
+      const problem = document.getElementById('f-problem').value.trim();
+      if (!problem) {
+        alert('Please describe your #1 problem — this is the most important field.');
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function nextStep(current) {
+    if (!validate(current)) return;
+    if (current < STEPS) showStep(current + 1);
+  }
+
+  function prevStep(current) {
+    if (current > 1) showStep(current - 1);
+  }
+
+  function submitForm() {
+    if (!validate(5)) return;
+
+    // Collect all data
+    const data = {
+      plan: plan === 'quick' ? '30-Min Call (₹999)' : 'Revenue Growth Audit (₹1,999)',
+      name: document.getElementById('f-name').value,
+      email: document.getElementById('f-email').value,
+      phone: document.getElementById('f-phone').value,
+      brand: document.getElementById('f-brand').value,
+      website: document.getElementById('f-website').value,
+      sector: document.querySelector('input[name="sector"]:checked')?.value || '—',
+      revenue: document.getElementById('revenue-display').textContent,
+      channels: [...document.querySelectorAll('input[id^="ch"]:checked')].map(i => i.value).join(', ') || '—',
+      painPoints: [...document.querySelectorAll('input[id^="p"]:checked')].map(i => i.value).join(', ') || '—',
+      problem: document.getElementById('f-problem').value,
+      tried: document.getElementById('f-tried').value,
+      success: document.getElementById('f-success').value,
+      need: document.querySelector('input[name="need"]:checked')?.value || '—',
+      urgency: document.querySelector('input[name="urgency"]:checked')?.value || '—',
+      budget: document.querySelector('input[name="budget"]:checked')?.value || '—',
+      extra: document.getElementById('f-extra').value,
+      source: document.getElementById('f-source').value,
+    };
+
+    // Send to email via mailto (fallback — replace with Formspree/Netlify in production)
+    const body = Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n');
+    const subject = encodeURIComponent(`[Consultation Request] ${data.brand} — ${data.plan}`);
+    const bodyEncoded = encodeURIComponent(body);
+
+    // Open mailto silently in background
+    const link = document.createElement('a');
+    link.href = `mailto:aakankshakarande@yahoo.com?subject=${subject}&body=${bodyEncoded}`;
+    link.click();
+
+    // Show confirmation screen
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('progress-fill').style.width = '100%';
+    document.getElementById('step-current').textContent = '✓';
+    document.getElementById('confirm-screen').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
