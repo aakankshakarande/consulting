@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aakanksha Karande — Portfolio</title>
+  <meta name="description" content="Portfolio of Aakanksha Karande — GTM & Growth Leader, AI-Enabled Scale, Global D2C & Wellness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:      #0e1a11;    /* deep forest-black */
+      --forest:   #162a1c;    /* dark forest for panels */
+      --parchment:#f8f3ea;    /* warm parchment */
+      --cream:    #f2ebe0;    /* card bg */
+      --crimson:  #8c2533;    /* accent */
+      --rose:     #b84455;    /* accent light */
+      --sage:     #4d7a5a;    /* mid-tone green (light bg only) */
+      --sage-on-dark: #8fbfa0; /* readable sage on forest green */
+      --mist:     #7a8c7e;    /* body text secondary */
+      --mist-on-dark: #a8b8ac; /* readable mist on forest green */
+      --border:   #ddd5c4;    /* warm border */
+      --rule:     #2a3d2e;    /* dark section border */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-bar {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .print-btn {
+      background: var(--ink);
+      color: var(--parchment);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.3rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 4px 24px rgba(14,26,17,0.18);
+    }
+    .print-btn:hover { background: var(--crimson); }
+    .print-btn.outline {
+      background: var(--parchment);
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 16px rgba(14,26,17,0.08);
+    }
+    .print-btn.outline:hover { background: var(--cream); }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 4rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--parchment);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--crimson); }
+    .nav-cta {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      background: var(--crimson);
+      color: var(--parchment);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--ink); }
+
+    /* ── HERO ── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 88vh;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-left {
+      padding: 6rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(3.4rem, 5.5vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--crimson);
+    }
+    .hero-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-bio {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+    .hero-bio strong { color: var(--ink); font-weight: 500; }
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+    }
+    .contact-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-pill:hover { color: var(--crimson); }
+    .contact-pill svg { width: 13px; height: 13px; stroke: currentColor; fill: none; flex-shrink: 0; }
+
+    .hero-right {
+      background: var(--forest);
+      padding: 6rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .metrics-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-on-dark);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .metric-row {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: -0.02em;
+      color: var(--parchment);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .metric-val span { color: var(--rose); }
+    .metric-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--sage-on-dark);
+      line-height: 1.45;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+    }
+    .section-header { margin-bottom: 3rem; }
+    .section-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    /* ── COMPETENCIES ── */
+    #competencies { background: var(--forest); }
+    #competencies .section-eyebrow { color: var(--sage-on-dark); }
+    #competencies h2 { color: var(--parchment); }
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .comp-card {
+      background: var(--forest);
+      padding: 2.25rem 1.75rem;
+      transition: background 0.2s;
+      border-top: 2px solid transparent;
+    }
+    .comp-card:hover { background: #1d3524; border-top-color: var(--rose); }
+    .comp-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--sage-on-dark);
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+    .comp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--parchment);
+      margin-bottom: 0.65rem;
+      line-height: 1.3;
+    }
+    .comp-desc {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--mist-on-dark);
+      line-height: 1.7;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { border-top: 1px solid var(--border); }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 0;
+      gap: 3rem;
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-date {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.4rem;
+    }
+    .exp-company {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .exp-location {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--mist);
+    }
+    .exp-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .exp-points li {
+      font-size: 0.86rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1.65;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .exp-points li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+      font-size: 0.72rem;
+      top: 2px;
+    }
+    .exp-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
+    .exp-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border: 1px solid var(--border);
+      color: var(--mist);
+      background: var(--cream);
+    }
+    .exp-result-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .result-chip {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.3rem 0.8rem;
+      background: var(--ink);
+      color: var(--parchment);
+    }
+
+    /* ── CASE STUDIES ── */
+    #cases { background: var(--cream); border-top: 1px solid var(--border); }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .case-card {
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s;
+    }
+    .case-card:hover { box-shadow: 0 8px 40px rgba(14,26,17,0.08); }
+    .case-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--crimson);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .case-card:hover::after { transform: scaleX(1); }
+    .case-cat {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.6rem;
+    }
+    .case-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 0.7rem;
+    }
+    .case-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+    .case-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .case-metric {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.7rem;
+    }
+
+    /* ── TOOLS ── */
+    #tools { border-top: 3px solid var(--crimson); }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .tool-group { background: var(--parchment); padding: 1.5rem; }
+    .tool-group-name {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tool-items { display: flex; flex-direction: column; gap: 0.3rem; }
+    .tool-item { font-size: 0.8rem; font-weight: 400; color: var(--mist); }
+
+    /* ── INNOVATIONS ── */
+    #innovations { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .innov-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .innov-card {
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 1rem;
+      align-items: start;
+      background: var(--cream);
+      transition: border-color 0.2s;
+    }
+    .innov-card:hover { border-color: var(--sage); }
+    .innov-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--crimson);
+      line-height: 1;
+      opacity: 0.25;
+    }
+    .innov-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+    .innov-desc {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1.7;
+    }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--forest); }
+    #education .section-eyebrow { color: var(--sage-on-dark); }
+    #education h2 { color: var(--parchment); }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .edu-card { background: var(--forest); padding: 2rem 1.75rem; }
+    .edu-type {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage-on-dark);
+      margin-bottom: 0.5rem;
+    }
+    .edu-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--parchment);
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .edu-inst { font-size: 0.8rem; font-weight: 300; color: var(--mist-on-dark); }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--crimson);
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+    }
+    .cta-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--parchment);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .cta-text p { font-size: 0.92rem; color: rgba(248,243,234,0.7); font-weight: 300; line-height: 1.75; }
+    .cta-actions { display: flex; gap: 1rem; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+    .btn-parchment {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      background: var(--parchment);
+      color: var(--crimson);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-parchment:hover { background: var(--ink); color: var(--parchment); }
+    .btn-ghost-parchment {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: rgba(248,243,234,0.8);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(248,243,234,0.35);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost-parchment:hover { color: var(--parchment); border-color: var(--parchment); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--mist);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    footer a { color: var(--mist); text-decoration: none; }
+    footer a:hover { color: var(--crimson); }
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) { .tools-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 4rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { padding: 3rem 1.5rem; }
+      .section-wrap { padding: 3.5rem 1.5rem; }
+      .comp-grid { grid-template-columns: 1fr 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+      .cases-grid, .innov-grid, .edu-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      #cta { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; }
+      .cta-actions { justify-content: flex-start; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
+      .print-bar { bottom: 1rem; right: 1rem; }
+    }
+
+    @media print {
+      .print-bar, nav { display: none !important; }
+      body { font-size: 11px; }
+      #hero { min-height: auto; }
+      .hero-right, #competencies, #education { background: #eee !important; }
+      .metric-val, .comp-title, .edu-name { color: #000 !important; }
+      #cta { background: #ddd !important; }
+      .cta-text h2 { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PRINT BAR -->
+<div class="print-bar">
+  <button class="print-btn" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6V2h8v4M4 12H3a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2v3a2 2 0 01-2 2h-1M4 10h8v4H4v-4z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Print / PDF
+  </button>
+  <a class="print-btn outline" href="mailto:aakankshakarande@yahoo.com">Contact Me</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Aakanksha Karande</a>
+  <ul class="nav-links">
+    <li><a href="#competencies">Competencies</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+  <a href="mailto:aakankshakarande@yahoo.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfolio · 2026</p>
+    <h1>Aakanksha<br><em>Karande</em></h1>
+    <p class="hero-title">Growth &amp; GTM Program Leader &nbsp;·&nbsp; AI-Enabled Scale &nbsp;·&nbsp; Global D2C &amp; Wellness</p>
+    <p class="hero-bio">
+      <strong>10+ years</strong> building and scaling consumer, wellness, and digital-first brands across India and international markets. I've owned P&amp;Ls, launched categories from scratch, taken products into <strong>7 countries</strong>, and embedded AI into growth teams that needed to move faster.<br><br>
+      I operate at the intersection of <strong>strategy and execution</strong> — translating growth ambition into working systems, channels, and numbers. Not decks. Outcomes.
+    </p>
+    <div class="hero-contacts">
+      <a href="tel:+917888913182" class="contact-pill">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.59 6.59l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        +91 788 891 3182
+      </a>
+      <a href="mailto:aakankshakarande@yahoo.com" class="contact-pill">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        aakankshakarande@yahoo.com
+      </a>
+      <a href="https://www.linkedin.com/in/aakankshakarande/" target="_blank" class="contact-pill">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/aakankshakarande
+      </a>
+      <span class="contact-pill">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bengaluru, India
+      </span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="metrics-label">Career Highlights</p>
+    <div class="metric-row">
+      <div class="metric-val"><span>10</span>+ yrs</div>
+      <div class="metric-desc">Experience across consumer, D2C, wellness &amp; tech brands</div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-val">+<span>25</span>%</div>
+      <div class="metric-desc">YoY online revenue growth delivered at scale</div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-val"><span>70</span>%</div>
+      <div class="metric-desc">Revenue shifted to marketplace &amp; gifting channels</div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-val"><span>7</span></div>
+      <div class="metric-desc">International markets launched end-to-end</div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-val"><span>21</span></div>
+      <div class="metric-desc">SKUs taken from research to market in Year 1</div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-val">+<span>60</span>%</div>
+      <div class="metric-desc">Category growth in non-seasonal months</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <div class="section-wrap">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Core Competencies</p>
+      <h2>What I'm built to do.</h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card fade-in">
+        <p class="comp-num">01</p>
+        <p class="comp-title">Growth &amp; GTM Program Management</p>
+        <p class="comp-desc">Designing and running structured go-to-market programs from channel architecture and launch sprints through post-launch optimisation loops and repeatable growth playbooks.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <p class="comp-num">02</p>
+        <p class="comp-title">New Product Development</p>
+        <p class="comp-desc">End-to-end ownership of NPD pipelines — consumer research, formulation inputs, positioning, packaging, compliance, and marketplace readiness. Research to revenue.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <p class="comp-num">03</p>
+        <p class="comp-title">Brand Strategy &amp; Positioning</p>
+        <p class="comp-desc">Consumer insight to brand architecture to messaging that converts. Identity, narrative, and communications that make brands stand for something specific and sellable.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <p class="comp-num">04</p>
+        <p class="comp-title">D2C &amp; Marketplace Growth</p>
+        <p class="comp-desc">Full P&amp;L ownership across Shopify, Amazon, Flipkart, Blinkit, and quick commerce. Assortment, content, pricing, ROAS — revenue-first, not vanity-metric-first.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <p class="comp-num">05</p>
+        <p class="comp-title">AI-Enabled Growth Systems</p>
+        <p class="comp-desc">Building AI infrastructure that makes teams faster: personalisation engines, content automation, demand forecasting, agentic workflows, and cross-functional capability frameworks.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <p class="comp-num">06</p>
+        <p class="comp-title">Global Market Expansion</p>
+        <p class="comp-desc">End-to-end international launch programs — product localisation, pricing, channel selection, compliance, and in-market performance tracking across 7 countries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Professional Experience</p>
+      <h2>10+ years. Built from the inside.</h2>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Mar 2025 – Present</p>
+          <p class="exp-company">Kenkou by Velthic Foods LLP</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">Head of Growth &amp; AI Program <span style="font-size:0.8rem;font-weight:300;font-family:'Outfit',sans-serif;color:var(--mist);">(Founding Team)</span></p>
+          <ul class="exp-points">
+            <li>Program owner for end-to-end NPD and GTM of functional food and wellness products — consumer research and formulation through launch, scale, and lifecycle management.</li>
+            <li>Building AI-enabled growth infrastructure: personalisation engines for nutrition recommendations, content &amp; campaign automation, and data-driven demand forecasting.</li>
+            <li>Designed full GTM roadmap across D2C, marketplaces, and quick commerce — launch sprints, channel strategy, pricing, and post-launch growth loops.</li>
+            <li>Acting as business–tech bridge, translating growth strategy into product, data, and automation requirements across teams.</li>
+          </ul>
+          <div class="exp-result-pills">
+            <span class="result-chip">₹11L+ ARR Year 1</span>
+            <span class="result-chip">21 SKUs Launched</span>
+            <span class="result-chip">19% Repeat Rate</span>
+            <span class="result-chip">4,000-unit B2B Order</span>
+          </div>
+          <div class="exp-pills">
+            <span class="exp-pill">NPD</span><span class="exp-pill">AI Systems</span><span class="exp-pill">Shopify</span><span class="exp-pill">D2C</span><span class="exp-pill">Quick Commerce</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Jul 2025 – Present</p>
+          <p class="exp-company">Skiom Private Limited</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">GTM &amp; Product Launch Program Lead <span style="font-size:0.8rem;font-weight:300;font-family:'Outfit',sans-serif;color:var(--mist);">(Consultant)</span></p>
+          <ul class="exp-points">
+            <li>Leading end-to-end NPD, Brand Strategy, and GTM for microbiome-based skincare — consumer research and positioning through launch and scale.</li>
+            <li>Owning online and offline marketing strategy: brand narrative, medical communication, performance marketing, content, and retail activation.</li>
+            <li>Managing marketplace growth and P&amp;L across D2C, Amazon, Flipkart, Blinkit, and Zepto — pricing, assortment, visibility, and ROAS.</li>
+          </ul>
+          <div class="exp-pills">
+            <span class="exp-pill">Brand Strategy</span><span class="exp-pill">Medical Comms</span><span class="exp-pill">P&amp;L</span><span class="exp-pill">Marketplace Growth</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Jun 2024 – Mar 2025</p>
+          <p class="exp-company">Lal Sweets Private Limited</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">AGM – E-Commerce &amp; Growth Programs</p>
+          <ul class="exp-points">
+            <li>Owned end-to-end e-commerce and marketplace growth, managing revenue, margins, and visibility across Amazon, Flipkart, and quick commerce.</li>
+            <li>Led festive GTM programs (Rakhi, Diwali), integrating assortment, pricing, promotions, media, and supply planning to drive peak-season revenue.</li>
+            <li>Built repeatable growth playbooks for seasonal launches and always-on marketplace performance.</li>
+          </ul>
+          <div class="exp-pills">
+            <span class="exp-pill">Amazon</span><span class="exp-pill">Flipkart</span><span class="exp-pill">Festive GTM</span><span class="exp-pill">P&amp;L</span><span class="exp-pill">A+ Content</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Jan 2022 – May 2024</p>
+          <p class="exp-company">Anand Sweets &amp; Savouries LLP</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">Global Growth &amp; Category Program Manager</p>
+          <ul class="exp-points">
+            <li>Led international expansion across 7 countries — product readiness, localisation, pricing, channel strategy, and launch execution.</li>
+            <li>Created Healthy Laddus and Festive Gifting categories from consumer insight through GTM and sustained growth.</li>
+            <li>Conceptualised India's first video-based digital gifting product integrating commerce and retail.</li>
+            <li>Drove integrated programs across e-commerce, quick commerce, retail activation, media, and partnerships.</li>
+          </ul>
+          <div class="exp-result-pills">
+            <span class="result-chip">25% YoY Growth</span>
+            <span class="result-chip">70% Revenue from Gifting</span>
+            <span class="result-chip">7 Countries</span>
+            <span class="result-chip">+60% Non-Festive Growth</span>
+          </div>
+          <div class="exp-pills">
+            <span class="exp-pill">Global Expansion</span><span class="exp-pill">Category Creation</span><span class="exp-pill">NPD</span><span class="exp-pill">D2C</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Mar 2020 – Dec 2021</p>
+          <p class="exp-company">Phalada Organic Consumer Products</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">Digital &amp; D2C Growth Manager</p>
+          <ul class="exp-points">
+            <li>Led D2C and marketplace growth — traffic acquisition, conversion optimisation, and repeat purchase programs.</li>
+            <li>Owned digital performance across SEO, paid media, and content to reduce dependency on discount-led growth.</li>
+          </ul>
+          <div class="exp-pills">
+            <span class="exp-pill">SEO</span><span class="exp-pill">Paid Media</span><span class="exp-pill">D2C</span><span class="exp-pill">CRO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Mar 2018 – Mar 2020</p>
+          <p class="exp-company">Hyundai Motors</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">Marketing &amp; Launch Programs</p>
+          <ul class="exp-points">
+            <li>Supported national and regional vehicle launch programs — digital campaigns, dealer-level activations, and performance tracking.</li>
+            <li>Gained experience in large-scale, process-driven organisations managing timelines, approvals, and multi-stakeholder coordination.</li>
+          </ul>
+          <div class="exp-pills">
+            <span class="exp-pill">Launch Programs</span><span class="exp-pill">Integrated Marketing</span><span class="exp-pill">Multi-Stakeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-date">Jul 2015 – Feb 2018</p>
+          <p class="exp-company">FranchiseBazar</p>
+          <p class="exp-location">Bengaluru, Karnataka</p>
+        </div>
+        <div class="exp-body">
+          <p class="exp-role">Organic &amp; Online Marketing</p>
+          <ul class="exp-points">
+            <li>Executed digital marketing — content marketing, SEO, lead generation, and paid media for franchise discovery platforms.</li>
+            <li>Built foundation in hands-on digital execution, analytics, and marketing fundamentals.</li>
+          </ul>
+          <div class="exp-pills">
+            <span class="exp-pill">Content Marketing</span><span class="exp-pill">SEO</span><span class="exp-pill">Lead Generation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="section-wrap">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Selected Case Studies</p>
+      <h2>Real outcomes, real brands.</h2>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card fade-in">
+        <p class="case-cat">Functional Food &amp; Wellness D2C · Kenkou</p>
+        <p class="case-title">Built a brand from zero — and a revenue engine to match</p>
+        <p class="case-desc">Led end-to-end NPD and GTM for a functional nutrition brand: 21 SKUs, a Shopify storefront with AI-based nutrition personalisation, and multi-channel distribution across D2C, marketplaces, and quick commerce.</p>
+        <div class="case-metrics">
+          <span class="case-metric">₹11L+ ARR in Year 1</span>
+          <span class="case-metric">19% Repeat Rate</span>
+          <span class="case-metric">4,000-unit B2B Order</span>
+          <span class="case-metric">21 SKUs Launched</span>
+        </div>
+      </div>
+      <div class="case-card fade-in">
+        <p class="case-cat">Heritage FMCG &amp; Gifting · Anand Sweets</p>
+        <p class="case-title">New categories, 7 global markets, 70% revenue share</p>
+        <p class="case-desc">Created and scaled Healthy Laddus and Festive Gifting from research to sustained revenue. Led international expansion across 7 countries. Conceptualised India's first video-based digital gifting product.</p>
+        <div class="case-metrics">
+          <span class="case-metric">25% YoY Online Growth</span>
+          <span class="case-metric">70% Revenue from Gifting</span>
+          <span class="case-metric">7 International Markets</span>
+          <span class="case-metric">+60% Non-Festive Growth</span>
+        </div>
+      </div>
+      <div class="case-card fade-in">
+        <p class="case-cat">Microbiome Skincare · Skiom</p>
+        <p class="case-title">Research-to-market translation for science-led products</p>
+        <p class="case-desc">Owned GTM, brand narrative, and marketplace growth for a clinical skincare brand. Translated R&amp;D into consumer storytelling, built launch roadmaps, and managed full P&amp;L across D2C and quick commerce.</p>
+        <div class="case-metrics">
+          <span class="case-metric">Multi-channel Launch</span>
+          <span class="case-metric">Medical Comms Strategy</span>
+          <span class="case-metric">Full P&amp;L Ownership</span>
+        </div>
+      </div>
+      <div class="case-card fade-in">
+        <p class="case-cat">Nutraceutical Brand · AI Transformation</p>
+        <p class="case-title">Built an AI-ready growth org from the inside</p>
+        <p class="case-desc">Led enterprise-wide agentic AI adoption — automation workflows, prompt systems, and capability frameworks that improved speed-to-market and decision intelligence across business units.</p>
+        <div class="case-metrics">
+          <span class="case-metric">Org-wide AI Adoption</span>
+          <span class="case-metric">Agentic Workflow Design</span>
+          <span class="case-metric">Marketing Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-wrap">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Tools &amp; Platforms</p>
+      <h2>The stack I work in.</h2>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">E-Commerce</p>
+        <div class="tool-items">
+          <span class="tool-item">Shopify</span>
+          <span class="tool-item">Adobe Commerce</span>
+          <span class="tool-item">Salesforce Commerce</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">Marketplaces</p>
+        <div class="tool-items">
+          <span class="tool-item">Amazon Seller Central</span>
+          <span class="tool-item">Flipkart</span>
+          <span class="tool-item">Myntra / Nykaa</span>
+          <span class="tool-item">Jiomart / ONDC</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">Quick Commerce</p>
+        <div class="tool-items">
+          <span class="tool-item">Blinkit</span>
+          <span class="tool-item">Swiggy Instamart</span>
+          <span class="tool-item">Zepto</span>
+          <span class="tool-item">Big Basket</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">Analytics &amp; Ads</p>
+        <div class="tool-items">
+          <span class="tool-item">Google Analytics 4</span>
+          <span class="tool-item">Looker Studio</span>
+          <span class="tool-item">Meta Business Suite</span>
+          <span class="tool-item">Adobe Analytics</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">CRM &amp; Automation</p>
+        <div class="tool-items">
+          <span class="tool-item">Salesforce</span>
+          <span class="tool-item">HubSpot</span>
+          <span class="tool-item">Zoho CRM</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">Generative AI</p>
+        <div class="tool-items">
+          <span class="tool-item">ChatGPT / GPT-4</span>
+          <span class="tool-item">Claude (Anthropic)</span>
+          <span class="tool-item">Perplexity</span>
+          <span class="tool-item">Google Gemini</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">Performance &amp; SEO</p>
+        <div class="tool-items">
+          <span class="tool-item">Google Ads</span>
+          <span class="tool-item">Meta Ads Manager</span>
+          <span class="tool-item">SEMrush / Ahrefs</span>
+          <span class="tool-item">Search Console</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in">
+        <p class="tool-group-name">Project &amp; OKR</p>
+        <div class="tool-items">
+          <span class="tool-item">Notion</span>
+          <span class="tool-item">Asana</span>
+          <span class="tool-item">Google Workspace</span>
+        </div>
+      </div>
+      <div class="tool-group fade-in" style="grid-column: span 2;">
+        <p class="tool-group-name">Sectors</p>
+        <div class="tool-items" style="flex-direction:row;flex-wrap:wrap;gap:0.4rem;">
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">Wellness &amp; Nutrition</span>
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">FMCG</span>
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">Skincare &amp; Beauty</span>
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">Gifting &amp; Festive</span>
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">Apparel</span>
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">D2C &amp; E-commerce</span>
+          <span class="tool-item" style="background:var(--cream);padding:0.25rem 0.75rem;border:1px solid var(--border);">Automotive</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATIONS -->
+<section id="innovations">
+  <div class="section-wrap">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Selected Innovations</p>
+      <h2>Things I built that didn't exist before.</h2>
+    </div>
+    <div class="innov-grid">
+      <div class="innov-card fade-in">
+        <div class="innov-num">01</div>
+        <div>
+          <p class="innov-title">AI Personalisation Roadmap — Kenkou</p>
+          <p class="innov-desc">Designed architecture for functional food recommendation and predictive wellness journeys — an AI-native approach to nutrition personalisation embedded into the D2C storefront.</p>
+        </div>
+      </div>
+      <div class="innov-card fade-in">
+        <div class="innov-num">02</div>
+        <div>
+          <p class="innov-title">India's First Video-Based Digital Gifting Platform</p>
+          <p class="innov-desc">Conceptualised and launched a video-integrated gifting experience for Anand Sweets — combining commerce, personalisation, and emotional storytelling in a single gifting product.</p>
+        </div>
+      </div>
+      <div class="innov-card fade-in">
+        <div class="innov-num">03</div>
+        <div>
+          <p class="innov-title">Category Creation — Healthy Laddus</p>
+          <p class="innov-desc">Built a new wellness snacking category from scratch — consumer research to GTM. Delivered 60%+ growth in non-festive months, proving year-round demand where none had existed.</p>
+        </div>
+      </div>
+      <div class="innov-card fade-in">
+        <div class="innov-num">04</div>
+        <div>
+          <p class="innov-title">Enterprise-Wide AI Org Transformation</p>
+          <p class="innov-desc">Led agentic AI adoption across a multi-unit growth organisation — prompt systems, automation workflows, and capability frameworks that changed how teams worked, not just what they used.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-wrap">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Education &amp; Certifications</p>
+      <h2>The academic foundation.</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <p class="edu-type">Postgraduate</p>
+        <p class="edu-name">Brand Strategy &amp; Communications</p>
+        <p class="edu-inst">MICA — The School of Ideas, Ahmedabad</p>
+      </div>
+      <div class="edu-card fade-in">
+        <p class="edu-type">Undergraduate</p>
+        <p class="edu-name">Bachelor of Business Administration (BBA)</p>
+        <p class="edu-inst">Lovely Professional University, Jalandhar &nbsp;·&nbsp; 2012 – 2015</p>
+      </div>
+      <div class="edu-card fade-in">
+        <p class="edu-type">Specialisation</p>
+        <p class="edu-name">Consumer Behaviour</p>
+        <p class="edu-inst">L.N. Welingkar Institute of Management, Bengaluru</p>
+      </div>
+      <div class="edu-card fade-in">
+        <p class="edu-type">Certifications</p>
+        <p class="edu-name">Google Project Management · Coursera</p>
+        <p class="edu-inst" style="margin-top:0.4rem;">Google Ads Certified &nbsp;·&nbsp; Google Analytics Certified</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-text fade-in">
+    <h2>Let's build something that works.</h2>
+    <p>Open to senior leadership roles in Growth, GTM, Brand Strategy, or AI-enabled marketing — full-time or consulting. If you're building a team that needs someone who executes, not just advises, let's talk.</p>
+  </div>
+  <div class="cta-actions fade-in">
+    <a href="mailto:aakankshakarande@yahoo.com" class="btn-parchment">Email Me</a>
+    <a href="https://www.linkedin.com/in/aakankshakarande/" target="_blank" class="btn-ghost-parchment">LinkedIn Profile →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Aakanksha Karande. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="mailto:aakankshakarande@yahoo.com">aakankshakarande@yahoo.com</a>
+    <a href="tel:+917888913182">+91 788 891 3182</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
